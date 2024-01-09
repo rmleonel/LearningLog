@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Topic(models.Model):
     #Un tema sobre el que esta aprendiendo el usuario
     text = models.CharField(max_length=50)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         #Devuelve una representacion del modelo como cadena
