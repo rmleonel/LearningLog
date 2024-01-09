@@ -1,14 +1,11 @@
 {% extends "app_learning_logs/base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-{% block content %}
-    <p>Learning Log helps you keep track of your learning, for any topic you are learning about</p>
-{% endblock content %}
-</body>
-</html>
+
+{% block page_header %}
+    <div class="jumbotron">
+        <h1 class="display-3">Track your learning</h1>
+        <p class="lead">Cada vez que aprendas algo nuevo sobre un tema, escribe una entrada en la que resumas lo que has aprendido.</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+            role="button">Register &raquo;</a>
+    </div>
+
+{% endblock page_header %}

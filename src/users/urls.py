@@ -1,7 +1,7 @@
 #Define patrones de URL para users.
 from django.urls import path, include
 from . import views
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth import views as auth_views
 
 app_name = 'users'
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     # Pagina de registro
     path('register/', views.register, name='register'),
     #Pagina de confirmacion de sesion cerrada
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
