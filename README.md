@@ -1,7 +1,14 @@
-# Learning Log
+# Nombre de estudiante: 
+Romero Leonel Mariano
+# Curso:
+Python.
+# Comision:
+50190
 
+# Learning Log
+Es un sistema de diario en linea que le ayudara a llevar un registro de lo que ha aprendido sobre temas concretos.
 Este proyecto utiliza Django para crear una aplicación web que permite a los usuarios registrar cuentas, agregar temas de aprendizaje y sus subtemas, y editarlos según sea necesario.
-La aplicación utiliza la biblioteca django-bootstrap4 para mejorar el estilo y la presentación de los formularios
+La aplicación utiliza la biblioteca django-bootstrap4 para mejorar el estilo y la presentación de los formularios.
 
 ## Estado del Proyecto.
 
