@@ -1,4 +1,5 @@
 {% extends "app_learning_logs/base.html" %}
+{% block brand %} Home {% endblock brand %}
 {% block page_header %}
 <h1>Topics</h1>
 <h3>Esta es tu lista actualizada de topicos ingresados: </h3>
@@ -14,5 +15,6 @@
             <li><h3>No topics have been added yet.</h3></li>
         {% endfor %}
     </ul>
-    <h3><a href="{% url 'app_learning_logs:new_topic' %}">Add a new topic</a></h3>
+    <a href="{% url 'app_learning_logs:new_topic' %}" class="btn btn-primary">Add a new topic</a>
+
 {% endblock content %}

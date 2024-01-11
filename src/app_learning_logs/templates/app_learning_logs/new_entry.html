@@ -1,6 +1,6 @@
 {% extends "app_learning_logs/base.html" %}
 {% load bootstrap4 %}
-
+{% block brand %} Home {% endblock brand %}
 {% block page_header %}
     <h2>Add a new entry for <a href="{% url 'app_learning_logs:topic' topic.id %}">{{ topic }}</a></h2>
 {% endblock page_header %}
@@ -10,6 +10,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit" class="btn btn-primary">Add entry</button>
+        <a href="{% url 'app_learning_logs:topic' topic.id %}" class="btn btn-secondary">Cancel</a>
     </form>
 {% endblock content %}
 

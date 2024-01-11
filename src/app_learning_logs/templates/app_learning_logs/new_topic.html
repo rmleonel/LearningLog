@@ -1,6 +1,6 @@
 {% extends "app_learning_logs/base.html" %}
 {% load bootstrap4 %}
-
+{% block brand %} Home {% endblock brand %}
 {% block page_header %}
     <h2>Add a new topic</h2>
 {% endblock page_header %}
@@ -10,5 +10,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit" class="btn btn-primary">Add topic</button>
+        <input type="submit" name="cancel" value="Cancelar" class="btn btn-secondary">
+        
     </form>
 {% endblock content %}

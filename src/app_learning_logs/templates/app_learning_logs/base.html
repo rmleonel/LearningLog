@@ -10,9 +10,9 @@
     {% bootstrap_javascript jquery='full '%}
 
 </head>
-<body>
+<body class="bg-white" >
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border">
-        <a class="navbar-brand" href="{% url 'app_learning_logs:index' %}">Learning Log</a>
+        <a class="navbar-brand" href="{% url 'app_learning_logs:index' %}">{% block brand %} Learning Log {% endblock brand %}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
             {% block content %}{% endblock content %}
         </div>
     </main>
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
             <span class="text-muted">© 2024 Learning Log. Todos los derechos reservados.</span>
         </div>

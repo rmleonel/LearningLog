@@ -28,11 +28,12 @@ def topic(request, topic_id):
 
 @login_required
 def new_topic(request):
-    # Añade tema nuevo
-    if request.method != 'POST':
-        # No se envían datos, crea un formulario en blanco
-        form = TopicForm()
-    else:
+    # Añade un tema nuevo
+    if request.method == 'POST':
+        if 'cancel' in request.POST:
+            # Si se presiona el botón de cancelar, redirige a otra página
+            return redirect('app_learning_logs:topics')
+
         # Datos POST enviados, procesa datos.
         form = TopicForm(data=request.POST)
         if form.is_valid():
@@ -40,6 +41,9 @@ def new_topic(request):
             new_topic.owner = request.user
             new_topic.save()
             return redirect('app_learning_logs:topics')
+    else:
+        # No se envían datos, crea un formulario en blanco
+        form = TopicForm()
 
     # Muestra un formulario en blanco o no válido
     context = {'form': form}
@@ -50,10 +54,11 @@ def new_entry(request, topic_id):
     # Añade una entrada nueva para un tema particular
     topic = Topic.objects.get(id=topic_id)
 
-    if request.method != "POST":
-        # No se han enviado datos, crea un formulario en blanco
-        form = EntryForm()
-    else:
+    if request.method == "POST":
+        if 'cancel' in request.POST:
+            # Si se presiona el botón de cancelar, redirige a otra página
+            return redirect("otra_pagina")
+
         # Datos POST enviados; procesa los datos
         form = EntryForm(data=request.POST)
         if form.is_valid():
@@ -61,6 +66,9 @@ def new_entry(request, topic_id):
             new_entry.topic = topic
             new_entry.save()
             return redirect("app_learning_logs:topic", topic_id=topic_id)
+    else:
+        # No se han enviado datos, crea un formulario en blanco
+        form = EntryForm()
 
     # Muestra formulario en blanco o no válido
     context = {"topic": topic, "form": form}
@@ -68,24 +76,30 @@ def new_entry(request, topic_id):
 
 @login_required
 def edit_entry(request, entry_id):
-    #edita uan entrada existente
+    # Obtiene la entrada existente que se va a editar según el ID proporcionado.
     entry = Entry.objects.get(id=entry_id)
+    
+    # Obtiene el tema asociado con la entrada.
     topic = entry.topic
-    #Se aegura que solo el usuario correcta pueda acceder
+    
+    # Asegura que solo el usuario correcto pueda acceder a la edición de la entrada.
     if topic.owner != request.user:
         raise Http404
     
-    if request.method != 'POST':
-        #Solicitud inicial; prerellena el formulario con la entrada actual.
-        form = EntryForm(instance=entry)
-    else:
-        #Datos POST enviados; procesar datos.
+    if request.method == 'POST':
+        # Datos POST enviados; procesa los datos del formulario.
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
+            # Si el formulario es válido, guarda la entrada editada y redirige al detalle del tema.
             form.save()
             return redirect('app_learning_logs:topic', topic_id=topic.id)
+    else:
+        # Solicitud GET; prerrellena el formulario con la entrada actual.
+        form = EntryForm(instance=entry)
     
+    # Crea un contexto con la entrada, el tema y el formulario para pasar a la plantilla.
     context = {'entry': entry, 'topic': topic, 'form': form}
+    
     return render(request, 'app_learning_logs/edit_entry.html', context)
 
 
