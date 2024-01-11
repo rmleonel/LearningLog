@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .models import Topic, Entry
@@ -102,4 +102,23 @@ def edit_entry(request, entry_id):
     
     return render(request, 'app_learning_logs/edit_entry.html', context)
 
+def delete_entry(request, entry_id):
+    # Obtiene la entrada que se va a eliminar según el ID proporcionado.
+    entry = get_object_or_404(Entry, id=entry_id)
+    
+    # Obtiene el tema asociado con la entrada.
+    topic = entry.topic
+    
+    # Asegura que solo el usuario correcto pueda acceder a la eliminación de la entrada.
+    if topic.owner != request.user:
+        raise Http404
+    
+    if request.method == 'POST':
+        # Confirma que la solicitud es mediante el método POST.
+        entry.delete()
+        return redirect('app_learning_logs:topic', topic_id=topic.id)
+    
+    # Si la solicitud no es mediante el método POST, renderiza el formulario de confirmación de eliminación.
+    context = {'entry': entry, 'topic': topic}
+    return render(request, 'app_learning_logs/delete_entry.html', context)
 
