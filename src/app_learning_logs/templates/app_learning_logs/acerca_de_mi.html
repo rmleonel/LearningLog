@@ -1,23 +1,38 @@
 {% extends "app_learning_logs/base.html" %}
+{% load static %}
 {% block content %}
-<div class="jumbotron" style="background: rgba(255, 255, 255, 0.075);">
-    <h2 class="display-4 text-succes" style="font-weight: bold;" >Acerca de mi</h2>
-    <p class="lead text-white">¡Saludos!<br>  Soy Leonel Romero, un profesional y estudiante con una sólida experiencia en campos fuera de la tecnología y desarrollo. Mi travesía en la programación comenzó en 2017, cuando estudié dos años de Analista de Sistemas. Durante ese tiempo, descubrí mi pasión por la codificación, una fascinación que nunca se apagó.
+<div class="jumbotron" style="background: rgba(255, 255, 255, 0.075); text-align: center;">
+    <img src="{% static 'images/FotoAcercademi.png' %}" alt="Leonel Romero" style="max-width: 200px; border-radius: 50%; margin-bottom: 20px;">
+    <h2 class="display-4 text-light" style="font-weight: bold;">Acerca de mi</h2>
+    <p class="lead text-white">
+        ¡Saludos!<br>
+        Soy Leonel Romero, tengo 28 años, un profesional y estudiante con una sólida experiencia en campos fuera de la tecnología y desarrollo. Mi travesía en la programación comenzó en 2017, cuando estudié dos años de Analista de Sistemas. Durante ese tiempo, descubrí mi pasión por la codificación, una fascinación que nunca se apagó.
 
         A pesar de haber dejado la programación por compromisos laborales y personales, hoy estoy totalmente enfocado en alcanzar una de mis metas personales: trabajar y vivir de la programación. Mi dedicación y aprendizaje continuo me han llevado a embarcarme en este emocionante viaje.
-        
-        Fuera del mundo tecnológico, disfruto de pasar tiempo en la computadora, de viajar, conocer y entrenar, lo cual equilibra mi vida y me brinda perspectivas valiosas. Creo firmemente en la constancia y paciencia para hacer cosas significativas, que guían mi enfoque tanto en el trabajo como en la vida cotidiana.
-        
-        Estoy entusiasmado por lo que el futuro tiene reservado y comprometido a aprovechar al máximo cada oportunidad que se presente.</p>
-</div>
-<div class="jumbotron" style="background: rgba(255, 255, 255, 0.075);">
-    <h2 class="display-4 text-succes" style="font-weight: bold;" >Acerca del proyecto</h2>
-    <p class="lead text-white">Este proyecto surgió a partir de los conocimientos adquiridos mientras exploraba un libro de Python, complementando mi aprendizaje más allá de los cursos tradicionales. Aunque es mi primer proyecto, pensé que sería una aplicación fácil de implementar.
 
-        Como se detalla en el README, se trata de una aplicación web que funciona como un diario, permitiéndote agregar tus tópicos de estudio y registrar paso a paso con fechas. Además, ofrece la capacidad de editar y eliminar entradas, así como topicos, siempre y cuando el usuario esté registrado.
-        
-        Aunque la aplicación es sencilla, ha requerido tiempo y dedicación para su desarrollo. En cuanto al diseño, mis conocimientos previos adquiridos durante un curso de front-end en 2020 facilitaron la aplicación de estilos y mejoras visuales.
-        
-        Espero sinceramente que encuentres la aplicación agradable y que cumpla con tus expectativas. 
+        Fuera del mundo tecnológico, de viajar, conocer y entrenar, lo cual equilibra mi vida y me brinda perspectivas valiosas. Creo firmemente en la constancia y paciencia para hacer cosas significativas, que guían mi enfoque tanto en el trabajo como en la vida cotidiana.
+
+        Estoy entusiasmado por lo que el futuro tiene reservado y comprometido a aprovechar al máximo cada oportunidad que se presente.
+
+        <br><br>
+
+        Puedes encontrarme en:
+        <br>
+        <a href="https://www.linkedin.com/in/leonel-romero/" target="_blank">LinkedIn</a> | <a href="https://github.com/rmleonel" target="_blank">GitHub</a>
     </p>
+</div>
+
+<div class="jumbotron" style="background: rgba(255, 255, 255, 0.075); text-align: center;">
+    <h2 class="display-4 text-light" style="font-weight: bold;">Acerca del proyecto</h2>
+    <p class="lead text-white">
+        Este proyecto surgió a partir de estudios, un proyecto final para CoderHouse y de los conocimientos adquiridos mientras exploraba un libro de Python, complementando mi aprendizaje más allá de los cursos tradicionales. Aunque es mi primer proyecto, pensé que sería una aplicación fácil de implementar.
+
+        Como se detalla en el README, se trata de una aplicación web que funciona como un diario, permitiéndote agregar tus tópicos de estudio y registrar paso a paso con fechas. Además, ofrece la capacidad de editar y eliminar entradas, así como tópicos, siempre y cuando el usuario esté registrado.
+
+        Aunque la aplicación es sencilla, ha requerido tiempo y dedicación para su desarrollo. En cuanto al diseño, mis conocimientos previos adquiridos durante un curso de front-end en 2020 facilitaron la aplicación de estilos y mejoras visuales.
+
+        Espero sinceramente que encuentres la aplicación agradable y que cumpla con tus expectativas.
+    </p>
+</div>
+
 {% endblock content %}

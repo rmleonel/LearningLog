@@ -1,8 +1,8 @@
 {% extends "app_learning_logs/base.html" %}
 
 {% block page_header %}
-    <div class="jumbotron" style="background: rgba(255, 255, 255, 0.075);">
-        <h1 class="display-2 text-succes" style="font-weight: bold;" >Learning Log</h1>
+    <div class="jumbotron" style="background: rgba(255, 255, 255, 0.075); text-align: center;">
+        <h1 class="display-2 text-succes" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);" >Learning Log</h1>
         <p class="lead text-white">Cada vez que aprendas algo nuevo sobre un tema, escribe una entrada en la que resumas lo que has aprendido.</p>
         <a class="btn btn-lg btn-primary bg-info" href="{% url 'users:register' %}"
             role="button">Register &raquo;</a>
