@@ -20,5 +20,6 @@ urlpatterns = [
     path('delete_topic/<int:topic_id>/', views.delete_topic, name='delete_topic'),
     #Pagina para borrar una entrada
     path('delete_entry/<int:entry_id>/', views.delete_entry, name='delete_entry'),
-
+    #Pagina que me dirige a acerca de mi
+    path('acerca_de_mi/', views.acerca_de_mi, name='acerca_de_mi'),
 ]

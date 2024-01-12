@@ -136,5 +136,8 @@ def delete_entry(request, entry_id):
     
     # Si la solicitud no es mediante el método POST, renderiza el formulario de confirmación de eliminación.
     context = {'entry': entry, 'topic': topic}
-    return render(request, 'app_learning_logs/delete_entry.html', context)
+    return render(request, 'app_learning_logs/topic', context)
+
+def acerca_de_mi(request):
+    return render(request, 'app_learning_logs/acerca_de_mi.html')
 

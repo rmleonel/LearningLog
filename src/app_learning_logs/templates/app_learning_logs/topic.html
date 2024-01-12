@@ -8,19 +8,23 @@
 <p>
     <a href="{% url 'app_learning_logs:new_entry' topic.id %}" class="btn btn-primary bg-info">Add a new entry</a>
 </p>
-    {%for entry in entries %}
-        <div class="card mb-3">
-            <h4 class="card-header">
-                {{ entry.date_added|date:'M d, Y H:i' }}
-                <small><a href="{% url 'app_learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-primary bg-info">Edit entry</a></small>
-                <small><a href="{% url 'app_learning_logs:delete_entry' entry.id %}" class="btn btn-sm btn-primary">Delete entry</a></small>
-            </h4>
-            <div class="card-body">
-                {{ entry.text|linebreaks }}
+{% for entry in entries %}
+    <div class="card mb-3 bg-secondary">
+        <h4 class="card-header">
+            {{ entry.date_added|date:'M d, Y H:i' }}
+            <div class="btn-group" role="group">
+                <a href="{% url 'app_learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-primary bg-info"  style="margin-right: 20px;">Edit entry</a>
+                <form method="post" action="{% url 'app_learning_logs:delete_entry' entry_id=entry.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
             </div>
+        </h4>
+        <div class="card-body">
+            {{ entry.text|linebreaks }}
         </div>
-    {% empty %}
-        <p>There are no entries for this topic yet.</p>
-    {% endfor %}
-    
-{% endblock content%}
+    </div>
+{% empty %}
+    <p>There are no entries for this topic yet.</p>
+{% endfor %}
+{% endblock content %}

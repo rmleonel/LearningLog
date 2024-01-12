@@ -15,7 +15,6 @@
             padding: 0;
             background: url('https://cdn.pixabay.com/photo/2017/08/06/22/11/people-2596896_1280.jpg') center center fixed; 
             background-size: cover;
-            overflow: hidden;
         }
     
         body::before {
@@ -83,9 +82,13 @@
     </main>
     <footer class="footer mt-auto py-3 bg-dark" style="position: fixed; bottom: 0; width: 100%; background-color: #343a40; color: white; text-align: center;">
         <div class="container">
+            <a href="{% url 'app_learning_logs:acerca_de_mi' %}" style="color: white; text-decoration: none;">Acerca de mi</a>
+            <br> 
             <span class="text-muted">© 2024 Learning Log. Todos los derechos reservados.</span>
         </div>
     </footer>
+    
 </body>
 </html>
+
 
