@@ -49,6 +49,22 @@ def new_topic(request):
     context = {'form': form}
     return render(request, 'app_learning_logs/new_topic.html', context)
 
+
+@login_required
+def delete_topic(request, topic_id):
+    # Obtén el tema que se va a eliminar
+    topic = get_object_or_404(Topic, id=topic_id)
+
+    # Verifica si el usuario actual es el propietario del tema
+    if request.user == topic.owner:
+        # Elimina el tema
+        topic.delete()
+        return redirect('app_learning_logs:topics')  # Redirige a la lista de temas
+    else:
+        # Redirige a otra página si el usuario no es el propietario
+        return redirect('app_learning_logs:topics')
+    
+
 @login_required
 def new_entry(request, topic_id):
     # Añade una entrada nueva para un tema particular

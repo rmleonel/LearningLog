@@ -1,15 +1,15 @@
 {% extends "app_learning_logs/base.html" %}
 
 {% block page_header %}
-    <div class="jumbotron bg-info">
-        <h1 class="display-2 text-succes">Learning Log</h1>
+    <div class="jumbotron" style="background: rgba(255, 255, 255, 0.075);">
+        <h1 class="display-2 text-succes" style="font-weight: bold;" >Learning Log</h1>
         <p class="lead text-white">Cada vez que aprendas algo nuevo sobre un tema, escribe una entrada en la que resumas lo que has aprendido.</p>
-        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        <a class="btn btn-lg btn-primary bg-info" href="{% url 'users:register' %}"
             role="button">Register &raquo;</a>
     </div>
 
-    <div class="jumbotron bg-info">
-        <h2 class="display-4 text-succes">Controla tu aprendizaje</h2>
+    <div class="jumbotron" style="background: rgba(255, 255, 255, 0.075);">
+        <h2 class="display-4 text-succes" style="font-weight: bold;" >Controla tu aprendizaje</h2>
         <p class="lead text-white">Es un sistema de diario en linea que le ayudara a llevar un registro de lo que ha aprendido sobre temas concretos.
         Explora, aprende y reflexiona con nuestro sistema de diario en línea. Registra tus conocimientos y descubrimientos sobre una variedad de temas concretos. 
         Este diario te brinda la libertad de agregar, editar y borrar tus entradas, permitiéndote personalizar y organizar tu experiencia de aprendizaje.</p>
