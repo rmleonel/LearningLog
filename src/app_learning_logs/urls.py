@@ -22,4 +22,6 @@ urlpatterns = [
     path('delete_entry/<int:entry_id>/', views.delete_entry, name='delete_entry'),
     #Pagina que me dirige a acerca de mi
     path('acerca_de_mi/', views.acerca_de_mi, name='acerca_de_mi'),
+    #PAgina que dirige a home
+    path('home/', views.home, name='home'),
 ]

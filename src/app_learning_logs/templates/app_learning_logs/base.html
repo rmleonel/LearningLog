@@ -39,7 +39,7 @@
 </head>
 <body class="bg-white" >
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 border">
-        <a class="navbar-brand" href="{% url 'app_learning_logs:index' %}">{% block brand %} Learning Log {% endblock brand %}</a>
+        {% block brand %}<a class="navbar-brand" href="{% url 'app_learning_logs:index' %}"> Learning Log </a>{% endblock brand %}
         <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'app_learning_logs:topics' %}">Topics</a>
+                    <a class="nav-link" href="{% url 'app_learning_logs:home' %}" style="font-size: 18px; margin-right: 24px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app_learning_logs:topics' %}" style="font-size: 18px; margin-right: 24px;">Topics</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

@@ -9,6 +9,11 @@ def index(request):
     return render(request, "app_learning_logs/index.html")
 
 @login_required
+def home(request):
+    #Pagina de inicio
+    return render(request, "app_learning_logs/home.html")
+
+@login_required
 def topics(request):
     #Muestra todos los temas
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')

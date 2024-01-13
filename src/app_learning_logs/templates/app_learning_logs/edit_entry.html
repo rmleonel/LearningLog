@@ -1,6 +1,5 @@
 {% extends "app_learning_logs/base.html" %}
-{% load bootstrap4 %}
-{% block brand %} Home {% endblock brand %}
+{% block brand %}{% endblock brand %} 
 {% block page_header %}
     <h2>Edit entry for <a href="{% url 'app_learning_logs:topic' topic.id %}">{{ topic }}</a></h2>
 {% endblock page_header %}
