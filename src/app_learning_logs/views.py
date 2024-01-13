@@ -123,6 +123,7 @@ def edit_entry(request, entry_id):
     
     return render(request, 'app_learning_logs/edit_entry.html', context)
 
+@login_required
 def delete_entry(request, entry_id):
     # Obtiene la entrada que se va a eliminar según el ID proporcionado.
     entry = get_object_or_404(Entry, id=entry_id)
