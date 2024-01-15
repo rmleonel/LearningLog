@@ -52,10 +52,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'app_learning_logs:topics' %}" style="font-size: 18px; margin-right: 24px;">Topics</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:profile' %}" style="font-size: 18px; margin-right: 24px;">Profile</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><span class="navbar-text mr-3"> Hola!, Bienvenido, {{ user.username}} </span>
+                    <li class="nav-item">
+                        <span class="navbar-text mr-3">
+                         <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                             Hola!, Bienvenido, {{ user.username}}
+                        </span>
                     </li>
                     <li class="nav-item">
                         <!-- Formulario de cierre de sesión -->

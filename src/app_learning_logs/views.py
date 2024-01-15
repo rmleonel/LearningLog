@@ -4,6 +4,7 @@ from django.http import Http404
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm 
 
+
 def index(request):
     #Pagina de inicio
     return render(request, "app_learning_logs/index.html")

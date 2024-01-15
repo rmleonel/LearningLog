@@ -2,6 +2,7 @@
 from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+from .views import profile
 
 app_name = 'users'
 urlpatterns = [
@@ -11,4 +12,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     #Pagina de confirmacion de sesion cerrada
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    #Pagina de perfil
+    path('profile/', views.profile, name='profile'),
 ]

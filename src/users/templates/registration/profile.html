@@ -1,0 +1,86 @@
+{% extends "app_learning_logs/base.html" %}
+{% block brand %}{% endblock brand %} 
+{% block content %}
+<style>
+     .avatar-container {
+      text-align: center;
+      position: relative;
+    }
+
+    .avatar-img {
+      border-radius: 50%;
+      width: 120px; /* Ajusta el ancho según sea necesario */
+      height: 140px; /* Ajusta la altura según sea necesario */
+      position: absolute;
+      top: -110px; /* Ajusta la posición vertical según sea necesario */
+      right: 10px; /* Ajusta la posición horizontal según sea necesario */
+    }
+
+    #id_bio {
+      background-color: rgba(255, 255, 255, 0.1);
+      max-height: 90px;
+      height: 100%;
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    /* Estilos adicionales para dispositivos móviles */
+    @media only screen and (max-width: 600px) {
+      .avatar-img {
+        width: 60px; /* Ajusta el ancho según sea necesario */
+        height: 60px; /* Ajusta la altura según sea necesario */
+        top: 5px; /* Ajusta la posición vertical según sea necesario */
+        right: 5px; /* Ajusta la posición horizontal según sea necesario */
+      }
+    }
+
+    /* Estilos para navbar en dispositivos móviles */
+    @media only screen and (max-width: 768px) {
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar-nav .nav-item {
+        margin-bottom: 10px;
+      }
+
+      .navbar-toggler {
+        margin-top: 10px;
+      }
+    }
+  </style>
+  </style>
+
+  <h2>Perfil de {{ user.username }}</h2>
+
+  <p>Nombre de usuario: {{ user.username }}</p>
+
+  {% if user.profile %}
+    <p>Biografía: {{ user.profile.bio }}</p>
+    {% if user.profile.avatar %}
+      <div class="avatar-container">
+        <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="avatar-img">
+      </div>
+    {% endif %}
+  {% else %}
+    <p>Aún no has completado tu perfil.</p>
+  {% endif %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-sm btn-info">Save</button>
+  </form>
+{% endblock %}
+
+
+
