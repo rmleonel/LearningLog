@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Topic(models.Model):
     #Un tema sobre el que esta aprendiendo el usuario
     text = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='topic_images/', null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 

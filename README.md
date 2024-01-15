@@ -25,6 +25,7 @@ Los requisitos para este proyecto son:
 - soupsieve==2.5
 - sqlparse==0.4.4
 - tzdata==2023.4
+- pillow==10.2.0
 
 ## Instalación.
 

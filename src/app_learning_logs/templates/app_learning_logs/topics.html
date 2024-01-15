@@ -10,17 +10,19 @@
         {% for topic in topics %}
             <li>
                 <h3>
+                    {% if topic.image %}
+                        <img src="{{ topic.image.url }}" alt="Imagen del tema" style="max-width: 50px; max-height: 50px; margin-right: 10px;">
+                    {% endif %}
                     <a href="{% url 'app_learning_logs:topic' topic.id %}" style="margin-right: 30px;">{{ topic }}</a>
                     <a href="{% url 'app_learning_logs:delete_topic' topic_id=topic.id %}" class="text-secondary small" style="font-size: small;">Delete topic</a>
-
-                </h3>
                 </h3>
             </li>
         {% empty %}
-            <li><h3>No topics have been added yet.</h3></li>
+            <li><h3>No hay topicos agregados todavía</h3></li>
         {% endfor %}
     </ul>
-    <a href="{% url 'app_learning_logs:new_topic' %}" class="btn btn-primary bg-info">Add a new topic</a>
+    <a href="{% url 'app_learning_logs:new_topic' %}" class="btn btn-primary bg-info">Agrega un nuevo topico</a>
 {% endblock content %}
+
 
 

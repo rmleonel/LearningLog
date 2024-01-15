@@ -6,14 +6,14 @@
 
 {% block content %}
 <p>
-    <a href="{% url 'app_learning_logs:new_entry' topic.id %}" class="btn btn-primary bg-info">Add a new entry</a>
+    <a href="{% url 'app_learning_logs:new_entry' topic.id %}" class="btn btn-primary bg-info">Agrega una nueva entrada</a>
 </p>
 {% for entry in entries %}
     <div class="card mb-3 bg-secondary">
         <h4 class="card-header">
             {{ entry.date_added|date:'M d, Y H:i' }}
             <div class="btn-group" role="group">
-                <a href="{% url 'app_learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-primary bg-info"  style="margin-right: 20px;">Edit entry</a>
+                <a href="{% url 'app_learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-primary bg-info"  style="margin-right: 20px;">Editar entrada</a>
                 <form method="post" action="{% url 'app_learning_logs:delete_entry' entry_id=entry.id %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>

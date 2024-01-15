@@ -33,24 +33,24 @@ def topic(request, topic_id):
 
 @login_required
 def new_topic(request):
-    # Añade un tema nuevo
     if request.method == 'POST':
         if 'cancel' in request.POST:
-            # Si se presiona el botón de cancelar, redirige a otra página
             return redirect('app_learning_logs:topics')
 
-        # Datos POST enviados, procesa datos.
-        form = TopicForm(data=request.POST)
+        form = TopicForm(request.POST, request.FILES)  # Añade request.FILES para manejar la carga de archivos
         if form.is_valid():
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
+
+            # Guarda la imagen si se proporciona
+            if 'image' in request.FILES:
+                new_topic.image = request.FILES['image']
+
             new_topic.save()
             return redirect('app_learning_logs:topics')
     else:
-        # No se envían datos, crea un formulario en blanco
         form = TopicForm()
 
-    # Muestra un formulario en blanco o no válido
     context = {'form': form}
     return render(request, 'app_learning_logs/new_topic.html', context)
 

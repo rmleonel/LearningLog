@@ -1,14 +1,26 @@
 {% extends "app_learning_logs/base.html" %}
 {% block brand %}{% endblock brand %} 
 {% block page_header %}
-    <h2>Add a new topic</h2>
+    <h2>Agrega un nuevo topico aqui</h2>
 {% endblock page_header %}
 
 {% block content %}
-    <form action="{% url 'app_learning_logs:new_topic' %}" method="post" class="form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit" class="btn btn-primary bg-info">Add topic</button>
-        <a href="{% url 'app_learning_logs:topics' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+<form action="{% url 'app_learning_logs:new_topic' %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Renderiza cada campo del formulario por separado -->
+    <div class="form-group">
+        <label for="{{ form.text.id_for_label }}">Título:</label>
+        {{ form.text }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.image.id_for_label }}">Imagen:</label>
+        {{ form.image }}
+    </div>
+
+    <button name="submit" class="btn btn-primary bg-info">Agregar tema</button>
+    <a href="{% url 'app_learning_logs:topics' %}" class="btn btn-secondary">Cancelar</a>
+</form>
 {% endblock content %}
+
