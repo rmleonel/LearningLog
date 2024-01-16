@@ -20,7 +20,7 @@ def register(request):
             new_user = form.save()
             #Inicia sesion del usuario y lo redirige a la pagina de inicio
             login(request, new_user)
-            return redirect('app_learning_logs:index')
+            return redirect('app_learning_logs:home')
     
     #Muestra formulario en blanco no valido
     context = {'form': form}
