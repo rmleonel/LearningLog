@@ -5,6 +5,10 @@ Python.
 # Comision:
 50190
 
+#Link al video de explicacion del proyecto:
+https://www.youtube.com/watch?v=jBRkMvCQDzA
+
+
 # Learning Log
 Es un sistema de diario en linea que le ayudara a llevar un registro de lo que ha aprendido sobre temas concretos.
 Este proyecto utiliza Django para crear una aplicación web que permite a los usuarios registrar cuentas, agregar temas de aprendizaje y sus subtemas, y editarlos según sea necesario.
