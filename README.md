@@ -4,6 +4,10 @@ Romero Leonel Mariano
 Python.
 # Comision:
 50190
+# Link al video de explicacion del proyecto:
+https://www.youtube.com/watch?v=jBRkMvCQDzA
+
+
 
 # Learning Log
 Es un sistema de diario en linea que le ayudara a llevar un registro de lo que ha aprendido sobre temas concretos.
