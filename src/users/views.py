@@ -26,24 +26,32 @@ def register(request):
     context = {'form': form}
     return render(request, 'registration/register.html', context)
 
+from django.core.exceptions import ValidationError
+
 @login_required
 def profile(request):
-    # Verifica si el perfil del usuario ya existe
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:
         profile = None
 
     if request.method == 'POST':
-        # Procesa el formulario de perfil
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user
-            profile.save()
-            return redirect('users:profile')
+
+            try:
+                if 'avatar' in request.FILES and request.FILES['avatar']:
+                    profile.avatar = request.FILES['avatar']
+
+                profile.save()
+                return redirect('users:profile')
+            except ValidationError as e:
+                form.add_error('avatar', e)
+                print(e)  # Imprime detalles sobre la excepción
+
     else:
-        # Muestra el formulario de perfil con datos existentes si están disponibles
         form = ProfileForm(instance=profile)
 
     return render(request, 'registration/profile.html', {'form': form})

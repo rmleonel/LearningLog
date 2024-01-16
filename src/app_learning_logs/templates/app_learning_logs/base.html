@@ -44,43 +44,50 @@
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app_learning_logs:home' %}" style="font-size: 18px; margin-right: 24px;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app_learning_logs:topics' %}" style="font-size: 18px; margin-right: 24px;">Topics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:profile' %}" style="font-size: 18px; margin-right: 24px;">Profile</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'app_learning_logs:home' %}" style="font-size: 18px; margin-right: 24px;">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'app_learning_logs:topics' %}" style="font-size: 18px; margin-right: 24px;">Topics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:profile' %}" style="font-size: 18px; margin-right: 24px;">Profile</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
+                    {% if user.profile and user.profile.avatar %}
                         <span class="navbar-text mr-3">
-                         <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                             Hola!, Bienvenido, {{ user.username}}
+                            <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                            Hola!, Bienvenido, {{ user.username }}
                         </span>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Formulario de cierre de sesión -->
-                        <form method="post" action="{% url 'users:logout' %}" class="form-inline my-2 my-lg-0">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary my-2 my-sm-0 bg-info">Log out</button>
-                        </form>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:register' %}">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
+                    {% else %}
+                        <span class="navbar-text mr-3">
+                            Hola!, Bienvenido, {{ user.username }}
+                        </span>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <!-- Formulario de cierre de sesión -->
+                    <form method="post" action="{% url 'users:logout' %}" class="form-inline my-2 my-lg-0">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary my-2 my-sm-0 bg-info">Log out</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:register' %}">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    
     </nav>
     <main role="main" class="container">
         <div class="pb-2 mb-2 border-bottom">
